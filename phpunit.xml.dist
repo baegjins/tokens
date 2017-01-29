@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./vendor/autoload.php"
+		 backupGlobals="false"
+		 backupStaticAttributes="false"
+		 colors="true"
+		 verbose="true"
+		 processIsolation="false"
+		 stopOnFailure="false"
+		 syntaxCheck="true" >
+
+	<testsuites>
+		<testsuite name="Alt3\Tokens All">
+			<directory>./tests/</directory>
+		</testsuite>
+	</testsuites>
+
+	<!-- Prevent coverage reports from looking in tests and vendors -->
+	<filter>
+		<whitelist>
+			<directory suffix=".php">./src/</directory>
+		</whitelist>
+	</filter>
+</phpunit>

@@ -1,0 +1,9 @@
+preset: psr2
+
+risky: false
+
+linting: true
+
+finder:
+  not-path:
+    - "tests/test_app/src/Controller"

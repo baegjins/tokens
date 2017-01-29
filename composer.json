@@ -1,0 +1,50 @@
+{
+    "name": "alt3/tokens",
+    "description": "The framework agnostic library for generating (secure) token objects.",
+    "keywords": [
+        "framework-agnostic",
+        "adapter-pattern",
+        "tokens",
+        "php",
+        "hhvm",
+        "alt3"
+    ],
+    "homepage": "https://github.com/alt3/tokens",
+    "support": {
+        "issues": "https://github.com/alt3/tokens/issues",
+        "source": "https://github.com/alt3/tokens"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bravo-kernel"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.16"
+    },
+    "require-dev": {
+        "paragonie/random_compat": "^2.0",
+        "phpunit/phpunit": "5.*",
+        "sebastian/peek-and-poke": "1.0.x-dev",
+        "squizlabs/php_codesniffer": "^2.5"
+    },
+    "suggest": {
+        "paragonie/random_compat": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alt3\\Tokens\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alt3\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "tests": "./vendor/bin/phpunit",
+        "cs": "./vendor/bin/phpcs -p -s --standard=PSR2 ./src ./tests"
+    }
+}

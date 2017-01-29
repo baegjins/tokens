@@ -1,0 +1,52 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - hhvm
+
+sudo: false
+
+env:
+  global:
+    - PHPUNIT=1
+
+matrix:
+  fast_finish: true
+
+  include:
+    - php: 5.6
+      env: WITHOUT_LIB_RANDOM_COMPAT=1
+
+    - php: 7.1
+      env: PHPCS=1 PHPUNIT=0
+
+    - php: 7.0
+      env: CODECOVERAGE=1 PHPUNIT=0
+
+  allow_failures:
+
+before_script:
+  - composer self-update
+  - composer install --prefer-dist --no-interaction
+
+  - sh -c "if [ '$WITHOUT_LIB_RANDOM_COMPAT' = '1' ]; then composer remove paragonie/random_compat --dev; fi"
+
+  - sh -c "if [ '$PHPCS' = '1' ]; then composer require squizlabs/php_codesniffer:2.*; fi"
+
+  - phpenv rehash
+  - set +H
+  - cp phpunit.xml.dist phpunit.xml
+
+script:
+  - sh -c "if [ '$PHPUNIT' = '1' ]; then vendor/bin/phpunit; fi"
+
+  - sh -c "if [ '$PHPCS' = '1' ]; then vendor/bin/phpcs -p --standard=PSR2 ./src ./tests ; fi"
+
+  - sh -c "if [ '$CODECOVERAGE' = '1' ]; then vendor/bin/phpunit --coverage-clover=clover.xml || true; fi"
+  - sh -c "if [ '$CODECOVERAGE' = '1' ]; then wget -O codecov.sh https://codecov.io/bash; fi"
+  - sh -c "if [ '$CODECOVERAGE' = '1' ]; then bash codecov.sh; fi"
+
+notifications:
+  email: false
