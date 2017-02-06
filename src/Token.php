@@ -10,7 +10,7 @@ namespace Alt3\Tokens;
 
 use Alt3\Tokens\Adapters\AdapterInterface;
 use Alt3\Tokens\Adapters\RandomBytesAdapter;
-use DateTime;
+use DateTimeImmutable;
 use InvalidArgumentException;
 
 /**
@@ -209,8 +209,7 @@ class Token
      */
     protected function setCreated()
     {
-        $time = new DateTime;
-        $this->created = $time->format(DateTime::ATOM);
+        $this->created = new DateTimeImmutable();
     }
 
     /**
@@ -220,13 +219,12 @@ class Token
      */
     protected function setExpires()
     {
-        $time = DateTime::createFromFormat(DateTime::ATOM, $this->created);
+        $created = $this->created;
 
         if ($this->lifetime === null) {
             $this->lifetime = self::DEFAULT_LIFETIME;
         }
 
-        $time->modify($this->lifetime);
-        $this->expires = $time->format(DateTime::ATOM);
+        $this->expires = $created->modify($this->lifetime);
     }
 }

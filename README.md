@@ -63,8 +63,19 @@ Alt3\Tokens\RandomBytesToken Object
     [category:protected] => password-reset
     [payload:protected] => 
     [lifetime:protected] => +3 days
-    [created:protected] => 2017-01-30T21:41:47+00:00
-    [expires:protected] => 2017-02-02T21:41:47+00:00
+    [created:protected] => DateTimeImmutable Object
+        (
+            [date] => 2017-02-06 13:53:25.000000
+            [timezone_type] => 3
+            [timezone] => UTC
+        )
+
+    [expires:protected] => DateTimeImmutable Object
+        (
+            [date] => 2017-02-09 13:53:25.000000
+            [timezone_type] => 3
+            [timezone] => UTC
+        )
 )
 ```
 
@@ -94,7 +105,7 @@ $token = new RandomBytesToken(12); // 2109028d9bac
 $token = new RandomBytesToken(12, true); // ����Wz
 
 $token->setLifetime('+30 minutes');
-print $token->getExpires(); // 2017-02-03T21:54:04+00:00
+print $token->getExpires(); // DateTimeImmutable
 
 $token->setCategory('password-reset');
 
@@ -140,8 +151,8 @@ Getter methods:
 - `getCategory()`: retrieves the `category` property (string)
 - `getLifetime()`: retrieves the `lifetime` property ([DateTime::modify](http://php.net/manual/en/datetime.modify.php) supported string)
 - `getPayload()`: retrieves the `payload` property (mixed)
-- `getCreated()`: retrieves the `created` property (DateTime::ATOM)
-- `getExpires()`: retrieves the `expires` property (DateTime::ATOM)
+- `getCreated()`: retrieves the `created` property ([DateTimeImmutable](http://php.net/manual/en/class.datetimeimmutable.php))
+- `getExpires()`: retrieves the `expires` property ([DateTimeImmutable](http://php.net/manual/en/class.datetimeimmutable.php))
 - `toArray()`: returns an array containing all token properties and their content
 
 Setter methods:
