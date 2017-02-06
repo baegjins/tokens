@@ -1,6 +1,6 @@
 {
     "name": "alt3/tokens",
-    "description": "The framework agnostic library for generating (secure) token objects.",
+    "description": "Framework agnostic library for generating (secure) token objects.",
     "keywords": [
         "framework-agnostic",
         "adapter-pattern",

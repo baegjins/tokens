@@ -7,8 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/alt3/tokens.svg?style=flat-square)](https://packagist.org/packages/alt3/tokens)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.txt)
 
-
-The framework agnostic PHP library for generating (secure) token objects.
+Framework agnostic PHP library for generating (secure) token objects.
 
 ## What does it do?
 
