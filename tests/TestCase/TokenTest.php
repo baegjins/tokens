@@ -128,23 +128,27 @@ class TokenTest extends BaseTestCase
     }
 
     /**
-     * Test getCreated()
+     * Test getCreated() and make sure it returns DateTimeImmutable
      */
     public function testGetCreated()
     {
         $proxy = new Proxy(new Token(new ManualAdapter('dummy')));
         $expected = $proxy->created;
         $this->assertSame($expected, $proxy->getCreated());
+
+        $this->assertInstanceOf('DateTimeImmutable', $proxy->created);
     }
 
     /**
-     * Test getExpires()
+     * Test getCreated() and make sure it returns DateTimeImmutable
      */
     public function testGetExpires()
     {
         $proxy = new Proxy(new Token(new ManualAdapter('dummy')));
         $expected = $proxy->expires;
         $this->assertSame($expected, $proxy->getExpires());
+
+        $this->assertInstanceOf('DateTimeImmutable', $proxy->expires);
     }
 
     /**
